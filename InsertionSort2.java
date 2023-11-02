@@ -17,23 +17,27 @@ public class InsertionSort2 {
                 "; efficiency: " + (double) runtime/arrayList.length +")");
     }
 
-    public static int sort (int[] arrayList) {
-        int runtime = 0;
+    public static int sort(int[] arrayList) {
+        int runtime = 0; // Initialisiere die Laufzeit-Zählervariable
+
         for (int i = 1; i < arrayList.length; i++) {
-            System.out.println(arrayListToString(arrayList) + " (element: " + arrayList[i] + ")"); // TODO: debug
-            int element = arrayList[i];
-            int k = i; // current position of our element
+            System.out.println(arrayListToString(arrayList) + " (Element: " + arrayList[i] + ")"); // TODO: Debugging
+            int element = arrayList[i]; // Speichert das aktuelle Element in einer Variable
+            int k = i; // Aktuelle Position unseres Elements
+
             while (k > 0 && arrayList[k-1] > element) {
-                System.out.println("  - (k: " + k + ")"); // TODO: debug
-                arrayList[k] = arrayList[k-1];
-                arrayList[k-1] = element;
-                k--;
+                System.out.println("  - (k: " + k + ")"); // TODO: Debugging
+                arrayList[k] = arrayList[k-1]; // Verschiebt das Element nach rechts
+                arrayList[k-1] = element; // Setzt das aktuelle Element an die korrekte Stelle
+                k--; // Versetzt die Position für den nächsten Vergleich um 1 nach links
                 runtime++;
             }
             runtime++;
         }
+
         return runtime;
     }
+
 
     public static int[] randomArrayList (int lowestValue, int highestValue, int length) {
         int[] arrayList = new int[length];
