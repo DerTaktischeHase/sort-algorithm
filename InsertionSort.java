@@ -13,6 +13,7 @@ public class InsertionSort {
         System.out.println("done...\n> " + arrayListToString(arrayList));
     }
 
+// https://images.app.goo.gl/XMwSJBXJTXaVCbA26
     public static void sort (int[] arrayList) {
         for (int i = 1; i < arrayList.length; i++) {
             System.out.println(arrayListToString(arrayList) + " (element: " + arrayList[i] + ")"); // TODO: debug
