@@ -1,5 +1,3 @@
-// TODO: in work
-
 /**
  * User: Timo
  * Date: 05.11.2023
@@ -14,17 +12,21 @@ public class SelectionSort {
 
         sort(arrayList);
 
-        System.out.println("done...\n> " + arrayListToString(arrayList) + "\nruntime: (" + runtime + "/" + arrayList.length + "; efficiency: " + (double) runtime/ arrayList.length +")");
+        System.out.println("done...\n> " + arrayListToString(arrayList) + "\nruntime: (" + runtime + "/" + arrayList.length + 
+        "; efficiency: " + (double) runtime/ arrayList.length +")");
     }
 
     public static void sort (int[] arrayList) {
-        while (!isSorted(arrayList)) {
-            for (int i = 0; i < arrayList.length-1; i++) {
-                runtime++;
-                if (arrayList[i] > arrayList[i+1]) {
-                    switchElements(i, i+1, arrayList);
+        int b = 0;
+        while (b < arrayList.length) { // TODO: correct
+            for(int i= b; i < arrayList.length-1; i++) {
+                int biggestElementIndex = b;
+                if (arrayList[i+1] > arrayList[i]) {
+                    biggestElementIndex = i+1;
                 }
             }
+            switchElements(biggestElementIndex, b, arrayList); // TODO: correct
+            b++;
         }
     }
 
@@ -33,18 +35,6 @@ public class SelectionSort {
         arrayList[index1] = arrayList[index2];
         arrayList[index2] = tempValue;
         runtime++;
-    }
-
-    public static boolean isSorted (int[] arrayList) {
-        boolean isSorted = true;
-        for (int i = 0; i < arrayList.length-1; i++) {
-            runtime++;
-            if (arrayList[i] > arrayList[i+1]) {
-                isSorted = false;
-                return isSorted;
-            }
-        }
-        return isSorted;
     }
 
     public static String arrayListToString (int[] array) {
