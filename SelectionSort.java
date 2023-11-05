@@ -19,13 +19,14 @@ public class SelectionSort {
     public static void sort (int[] arrayList) {
         int b = 0;
         while (b < arrayList.length) { // TODO: correct
+            int lowestElementIndex = b;
             for(int i= b; i < arrayList.length-1; i++) {
-                int biggestElementIndex = b;
-                if (arrayList[i+1] > arrayList[i]) {
-                    biggestElementIndex = i+1;
+                if (arrayList[i+1] < arrayList[lowestElementIndex]) {
+                    lowestElementIndex = i+1;
                 }
+                runtime++;
             }
-            switchElements(biggestElementIndex, b, arrayList); // TODO: correct
+            switchElements(lowestElementIndex, b, arrayList); // TODO: correct
             b++;
         }
     }

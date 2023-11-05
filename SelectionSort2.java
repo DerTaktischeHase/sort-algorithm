@@ -3,14 +3,14 @@ import java.util.Random;
 /**
  * User: Timo
  * Date: 05.11.2023
- * Time: 12:18
+ * Time: 20:00
  */
-public class BubbleSort2 {
+public class SelectionSort2 {
     static int runtime;
     public static void main(String[] args) {
         // Integer.MIN_VALUE = -2147483648 = -2^(31)
         // Integer.MAX_VALUE = +2147483647 = +2^(31)-1
-        int[] arrayList = randomArrayList(1, 500, 1000); // the limit must be positive (example: 1, 500, 10)
+        int[] arrayList = randomArrayList(1, 1000, 5000); // the limit must be positive (example: 1, 500, 10)
         System.out.println("original ArrayList: \n" + arrayListToString(arrayList));
         runtime = 0;
 
@@ -21,13 +21,17 @@ public class BubbleSort2 {
     }
 
     public static void sort (int[] arrayList) {
-        while (!isSorted(arrayList)) {
-            for (int i = 0; i < arrayList.length-1; i++) {
-                runtime++;
-                if (arrayList[i] > arrayList[i+1]) {
-                    switchElements(i, i+1, arrayList);
+        int b = 0;
+        while (b < arrayList.length) { // TODO: correct
+            int lowestElementIndex = b;
+            for(int i= b; i < arrayList.length-1; i++) {
+                if (arrayList[i+1] < arrayList[lowestElementIndex]) {
+                    lowestElementIndex = i+1;
                 }
+                runtime++;
             }
+            switchElements(lowestElementIndex, b, arrayList); // TODO: correct
+            b++;
         }
     }
 
@@ -36,18 +40,6 @@ public class BubbleSort2 {
         arrayList[index1] = arrayList[index2];
         arrayList[index2] = tempValue;
         runtime++;
-    }
-
-    public static boolean isSorted (int[] arrayList) {
-        boolean isSorted = true;
-        for (int i = 0; i < arrayList.length-1; i++) {
-            runtime++;
-            if (arrayList[i] > arrayList[i+1]) {
-                isSorted = false;
-                return isSorted;
-            }
-        }
-        return isSorted;
     }
 
     public static int[] randomArrayList (int lowestValue, int highestValue, int length) {

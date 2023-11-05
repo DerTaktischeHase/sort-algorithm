@@ -55,7 +55,7 @@ public class CountingSort2 {
 
         // the limit must be positive
         if (lowestValue < 1) lowestValue = 1;
-        if (highestValue < 1) highestValue = 2;
+        if (highestValue < 1) highestValue = 1;
         if (highestValue < lowestValue) highestValue = lowestValue+1;
 
         for (int i = 0; i < length; i++) {
