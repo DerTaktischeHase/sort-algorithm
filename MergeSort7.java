@@ -3,7 +3,7 @@ import java.util.Random;
 public class MergeSort7 {
     public static void main (String[] args) {
         int[] array = { 4, 2, 7, 5 };
-        split(array);//5
+        split(array);
         System.out.println(arrayListToString(array));
     }
 
