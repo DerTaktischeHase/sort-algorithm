@@ -1,4 +1,4 @@
-public class CountingSort4 {
+public class MergeSort8 {
   public static void sort (int[] list) {
     split(list);
   }
@@ -23,13 +23,38 @@ public class CountingSort4 {
     split(left);
     split(right);
 
-    merge();
+    merge(list, left, right);
   }
 
   public static void merge (int[] list, int[] left, int[] right) {
+    int regularIndex = 0, leftIndex = 0, rightIndex = 0;
+
+    while (leftIndex < left.length && rightIndex < right.length) {
+      if (left[leftIndex] > right[rightIndex]) {
+        list[regularIndex] = right[rightIndex];
+        regularIndex++, rightIndex++;
+      } else if (right[rightIndex] > left[leftIndex]){
+        list[regularIndex] = left[leftIndex];
+        regularIndex++, leftIndex++;
+      }
+    }
+
+    while (leftIndex < left.length) {
+      list[regularIndex] = left[leftIndex];
+      regularIndex;
+      leftIndex++; 
+    }
+
+    while (rightIndex < right.length) {
+      list[regularIndex] = right[rightIndex];
+      regularIndex++;
+      rightIndex++; 
+    }
 
   }
   public static void main (String[] args) {
-    
+    int[] list = new int[]{ 4, 6, 2, 4, 8};
+    sort(list);
+    System.out.println();
   }
 }
