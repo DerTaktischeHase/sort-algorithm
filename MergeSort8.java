@@ -59,7 +59,7 @@ public class MergeSort8 {
     public static void main (String[] args) {
         int[] list = new int[]{ 4, 6, 2, 4, 8};
         System.out.println(Arrays.toString(list));
-        split(list);
+        sort(list);
         System.out.println(Arrays.toString(list));
     }
 }
